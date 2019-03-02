@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
+    <head>
+            <link rel="stylesheet" type="text/css" href="..//css/index.css" media="screen" />
+    </head>
     <body bgcolor="cyan">
         <h1>Hoe oud is Patrick?</h1>
+
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Tijdseenheid</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#">Normale Tijd</a>
+              <a href="#">Marsjaren</a>
+            </div>
+          </div> 
+
         <!-- Display the countdown timer in an element -->
         <h2 id="demo"></p>
 
@@ -21,12 +33,12 @@
             // Time calculations for days, hours, minutes and seconds
             var years = Math.floor((distance / (1000 * 60 * 60 * 24) / 365.25));
             var days = Math.floor((distance / (1000 * 60 * 60 * 24)) - years * 365.25);
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) - 1);
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Display the result in the element with id="demo"
-            document.getElementById("demo").innerHTML = years + " Jaar  " + days + " dagen " + hours + " uren "
+            document.getElementById("demo").innerHTML = years + " jaren  " + days + " dagen " + hours + " uren "
             + minutes + " minuten " + seconds + " seconden ";
             // If the count down is finished, write some text
             if (distance < 0) {
@@ -34,6 +46,26 @@
                 document.getElementById("demo").innerHTML = "EXPIRED";
             }
             }, 1000);
+
+                        /* When the user clicks on the button,
+            toggle between hiding and showing the dropdown content */
+            function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown menu if the user clicks outside of it
+            window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+                }
+            }
+            } 
         </script>
     </body>
 </html>
