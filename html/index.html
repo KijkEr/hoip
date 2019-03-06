@@ -1,71 +1,143 @@
 <!DOCTYPE html>
 <html>
     <head>
+			<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
+			
+			<style>		
+			
+			html body {
+			background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/45544/background-svg.svg) no-repeat center center fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			}
+			
+			.spacer {
+			}
+			
+			.top-spacer {
+			margin-top:200px;
+			}
+			
+			.content-container {
+			padding: 10px;
+			background-color: rgb(255, 132, 240);
+			background:transparent;
+			}
+			
+			.myBackground {
+			background-color: rgba(255,255,255, 0.7);
+			color: inherit;
+			}
+			
+			
+			</style>
     </head>
-    <body bgcolor="cyan">
-        <h1>Hoe oud is Patrick?</h1>
+    <body>
+	
+	<div class="container">
+	
+	<div class="row align-items-start">
+		<div class="col-12">
+			<div class ="top-spacer">
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="row align-items-center">
+	
+		<div class="col-3">
+			<div class ="spacer">
+			</div>
+		</div>
+		
+		<div class="col-6">
+			<div class ="jumbotron myBackground">
+			
+			<h1 class="whitney">Hoe oud is Patrick?</h1>
+			<h3 class="gotham">Een veelgestelde vraag</h3>
+			
+			<p>Vraag jij je ook wel eens af hoe oud Patrick is? Druk op de onderstaande knop om er achter te komen. Vriendelijke groet, het development-team van hoeoudispatrick.nl</p>
+			
+			<p><a class="btn btn-primary btn-lg" role="button" onclick="showDiv()">Learn more &raquo;</a></p>
 
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Tijdseenheid</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="#">Normale Tijd</a>
-              <a href="#">Marsjaren</a>
-            </div>
-          </div> 
+			<!-- Display the countdown timer in an element -->
+			<div id="patricktijd" style="display:none;">
+			<h2 id="demo"></p>
+			</div>
+			
+			</div>
+		</div>
+		
+		<div class="col-3">
+			<div class ="spacer">
+			</div>
+		</div>
+		
+	</div>
+	
+	</div>
+	</body>
 
-        <!-- Display the countdown timer in an element -->
-        <h2 id="demo"></p>
+	<script>
+		// Set the date we're counting down to
+		var countDownDate = new Date("Sep 10, 1992 00:00:00").getTime();
 
-        <script>
-            // Set the date we're counting down to
-            var countDownDate = new Date("Sep 10, 1992 00:00:00").getTime();
+		// Update the count down every 1 second
+		var x = setInterval(function() {
 
-            // Update the count down every 1 second
-            var x = setInterval(function() {
+		// Get todays date and time
+		var now = new Date().getTime();
 
-            // Get todays date and time
-            var now = new Date().getTime();
+		// Find the distance between now and the count down date
+		var distance = now - countDownDate;
 
-            // Find the distance between now and the count down date
-            var distance = now - countDownDate;
+		// Time calculations for days, hours, minutes and seconds
+		var years = Math.floor((distance / (1000 * 60 * 60 * 24) / 365.25));
+		var days = Math.floor((distance / (1000 * 60 * 60 * 24)) - years * 365.25);
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) - 1);
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Time calculations for days, hours, minutes and seconds
-            var years = Math.floor((distance / (1000 * 60 * 60 * 24) / 365.25));
-            var days = Math.floor((distance / (1000 * 60 * 60 * 24)) - years * 365.25);
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) - 1);
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		// Display the result in the element with id="demo"
+		document.getElementById("demo").innerHTML = years + " jaren  " + days + " dagen " + hours + " uren "
+		+ minutes + " minuten " + seconds + " seconden ";
+		// If the count down is finished, write some text
+		if (distance < 0) {
+			clearInterval(x);
+			document.getElementById("demo").innerHTML = "EXPIRED";
+		}
+		}, 1000);
 
-            // Display the result in the element with id="demo"
-            document.getElementById("demo").innerHTML = years + " jaren  " + days + " dagen " + hours + " uren "
-            + minutes + " minuten " + seconds + " seconden ";
-            // If the count down is finished, write some text
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("demo").innerHTML = "EXPIRED";
-            }
-            }, 1000);
+					/* When the user clicks on the button,
+		toggle between hiding and showing the dropdown content */
+		function myFunction() {
+		document.getElementById("myDropdown").classList.toggle("show");
+		}
 
-                        /* When the user clicks on the button,
-            toggle between hiding and showing the dropdown content */
-            function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-            }
-
-            // Close the dropdown menu if the user clicks outside of it
-            window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-                }
-            }
-            } 
-        </script>
-    </body>
+		// Close the dropdown menu if the user clicks outside of it
+		window.onclick = function(event) {
+		if (!event.target.matches('.dropbtn')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+			var openDropdown = dropdowns[i];
+			if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			}
+			}
+		}
+		} 
+	</script>
+	
+	<script>
+	function showDiv() {
+    document.getElementById('patricktijd').style.display = "block";
+	}
+	</script>
+	
+	
 </html>
